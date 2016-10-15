@@ -1,5 +1,9 @@
 "use strict";
 
+let weaponSelected = null;
+let classSelected = null;
+let spellSelected = null;
+
 let BattleGround = function () {
   this.player = null;
   this.enemy = null;
@@ -66,7 +70,7 @@ $(document).ready(function() {
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
-        BattleGround.player.setWeapon(new Gauntlet.WeaponRack.BroadSword());
+        BattleGround.player.setWeapon(weaponSelected);
         console.log("moving along weapon", BattleGround.player);
         break;
       case "card--spell":
@@ -76,6 +80,52 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
     }
+
+    $(document).on("click", ".weapon__link", function(e) {
+      let weapon = $(this).find(".btn__text").attr("weapon");
+      switch(weapon){
+        case "Axe":
+        console.log("axe selected");
+        weaponSelected = new Gauntlet.WeaponRack.WarAxe();
+        break;
+        case "Dagger":
+        console.log("dagger selected");
+        weaponSelected = new Gauntlet.WeaponRack.Dagger();
+        break;
+        case "BroadSword":
+        console.log("BroadSword selected");
+        weaponSelected = new Gauntlet.WeaponRack.BroadSword();
+        break;
+        case "Wand":
+        console.log("BroadSword selected");
+        weaponSelected = new Gauntlet.WeaponRack.Wand();
+        break;
+        case "SwordandShield":
+        console.log("BroadSword selected");
+        weaponSelected = new Gauntlet.WeaponRack.SwordandShield();
+        break;
+        case "Staff":
+        console.log("Staff selected");
+        weaponSelected = new Gauntlet.WeaponRack.Staff();
+        break;
+        case "Mace":
+        console.log("Mace selected");
+        weaponSelected = new Gauntlet.WeaponRack.Mace();
+        break;
+        case "Claymore":
+        console.log("Claymore selected");
+        weaponSelected = new Gauntlet.WeaponRack.Claymore();
+        break;
+        case "Crossbow":
+        console.log("Crossbow");
+        weaponSelected = new Gauntlet.WeaponRack.Crossbow();
+        break;
+        case "Random":
+        console.log("random");
+        weaponSelected = new Gauntlet.WeaponRack.Random();
+        break;
+      }
+    });
 
     if (moveAlong) {
       $(".card").hide();
