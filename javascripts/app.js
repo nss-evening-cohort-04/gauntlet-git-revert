@@ -1,3 +1,5 @@
+"use strict";
+
 /*
   Test code to generate a human player and an orc player
  */
@@ -37,6 +39,12 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--weapon":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
+      case "card--spell":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
+      case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
         break;
     }
