@@ -1,17 +1,13 @@
 "use strict";
 
-var Gauntlet = (function (){
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
-var Gauntlet = Gauntlet || {};
-Gauntlet.Combatants = {};
+var Gauntlet = (function (player){
+player.Combatants = {};
 
 /*
   Define the base object for any player of Gauntlet,
   whether a human player or a monster.
  */
-Gauntlet.Combatants.Player = function(name) {
+player.Combatants.Player = function(name) {
   this.species = null;
   this.class = null;
   this.weapon = null;
@@ -43,11 +39,11 @@ Gauntlet.Combatants.Player = function(name) {
   };
 };
 
-Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
+player.Combatants.Player.prototype.setWeapon = function(newWeapon) {
   this.weapon = newWeapon;
 };
 
-Gauntlet.Combatants.Player.prototype.generateClass = function() {
+player.Combatants.Player.prototype.generateClass = function() {
   // Get a random index from the allowed classes array
   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
@@ -66,7 +62,7 @@ Gauntlet.Combatants.Player.prototype.generateClass = function() {
   Define the base properties for a human in a
   constructor function.
  */
-Gauntlet.Combatants.Human = function() {
+player.Combatants.Human = function() {
   var randomSkin;
 
   this.species = "Human";
@@ -78,21 +74,20 @@ Gauntlet.Combatants.Human = function() {
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
 };
-Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
+player.Combatants.Human.prototype = new player.Combatants.Player();
 
 
 /*
   Define the base properties for a monster in a
   constructor function.
  */
-Gauntlet.Combatants.Monster = function() {
+player.Combatants.Monster = function() {
   this.health = this.health - 30;
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
 };
 
-Gauntlet.Combatants.Monster.prototype = new Gauntlet.Combatants.Player();
-
+player.Combatants.Monster.prototype = new player.Combatants.Player();
+return player;
 
 })(Gauntlet || {});
-

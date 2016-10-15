@@ -1,0 +1,6 @@
+var Gauntlet = (function () {
+
+  return {
+
+  };
+})();
