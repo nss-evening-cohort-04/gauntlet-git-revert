@@ -4,6 +4,8 @@
 var Gauntlet = Gauntlet || {};
 Gauntlet.GuildHall = {};
 
+"use strict";
+
 /*
   Base function for a player, or enemy, class (profession)
  */
