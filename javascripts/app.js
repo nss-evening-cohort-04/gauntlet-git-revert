@@ -1,6 +1,9 @@
 "use strict";
 
-
+let BattleGround = function () {
+  this.player = null;
+  this.enemy = null;
+}
 
 
 $(document).ready(function() {
@@ -17,6 +20,24 @@ $(document).ready(function() {
   orc.generateClass();
   orc.setWeapon(new Gauntlet.WeaponRack.BroadSword());
   console.log(orc.toString());
+
+  var battleGround = new BattleGround();
+
+  battleGround.player = warrior;
+  battleGround.enemy = orc;
+
+  console.log(battleGround);
+
+  function attack(combatant) {
+    console.log("player",combatant);
+    console.log("player health",combatant.health);
+    combatant.health -= 10;
+    console.log("player health after",combatant.health);
+  }
+
+  attack(battleGround.player);
+
+  console.log(battleGround);
 
   /*
     Test code to generate a spell
@@ -39,9 +60,14 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
+        BattleGround.player = new Gauntlet.Combatants.Player();
+        BattleGround.player.playerName = $("#player-name").val();
+        console.log("moving along player", BattleGround.player);
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
+        BattleGround.player.setWeapon(new Gauntlet.WeaponRack.BroadSword());
+        console.log("moving along weapon", BattleGround.player);
         break;
       case "card--spell":
         moveAlong = ($("#player-name").val() !== "");
