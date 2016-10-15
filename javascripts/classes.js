@@ -1,10 +1,8 @@
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
-var Gauntlet = Gauntlet || {};
-Gauntlet.GuildHall = {};
-
 "use strict";
+
+var Gauntlet = (function (classesChoice){
+
+Gauntlet.GuildHall = {};
 
 /*
   Base function for a player, or enemy, class (profession)
@@ -18,7 +16,7 @@ Gauntlet.GuildHall.PlayerClass = function() {
 
   this.toString = function() {
     return this.name;
-  }
+  };
 };
 
 /*
@@ -126,3 +124,4 @@ Gauntlet.GuildHall.Sorcerer.prototype = new Gauntlet.GuildHall.Mage();
       - Assassin
  */
 
+})(Gauntlet || {});
