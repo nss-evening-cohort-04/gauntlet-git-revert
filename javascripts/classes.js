@@ -1,8 +1,7 @@
 "use strict";
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
-var Gauntlet = Gauntlet || {};
+
+var Gauntlet = (function (classesChoice){
+
 Gauntlet.GuildHall = {};
 
 /*
@@ -124,3 +123,6 @@ Gauntlet.GuildHall.Sorcerer.prototype = new Gauntlet.GuildHall.Mage();
       - Ninja
       - Assassin
  */
+
+})(Gauntlet || {});
+

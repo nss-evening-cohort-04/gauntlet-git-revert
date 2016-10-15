@@ -1,5 +1,6 @@
 "use strict";
 
+var Gauntlet = (function (){
 /*
   TODO: Modularize this code with IIFE or Browserify
  */
@@ -33,3 +34,5 @@ Gauntlet.SpellBook.Sphere = function() {
   this.type = this.damageTypes[random];
 };
 Gauntlet.SpellBook.Sphere.prototype = new Gauntlet.SpellBook.Spell();
+
+})(Gauntlet || {});

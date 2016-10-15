@@ -1,5 +1,7 @@
 "use strict";
 
+var Gauntlet = (function (){
+
 Gauntlet.Combatants.Orc = function() {
   this.health = this.health + 20;
   this.species = "Orc";
@@ -19,3 +21,7 @@ Gauntlet.Combatants.Orc = function() {
 };
 
 Gauntlet.Combatants.Orc.prototype = new Gauntlet.Combatants.Monster();
+
+
+})(Gauntlet || {});
+

@@ -1,5 +1,6 @@
 "use strict";
 
+var Gauntlet = (function (){
 /*
   TODO: Modularize this code with IIFE or Browserify
  */
@@ -91,3 +92,7 @@ Gauntlet.Combatants.Monster = function() {
 };
 
 Gauntlet.Combatants.Monster.prototype = new Gauntlet.Combatants.Player();
+
+
+})(Gauntlet || {});
+
