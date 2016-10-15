@@ -28,14 +28,22 @@ $(document).ready(function() {
 
   console.log(battleGround);
 
-  function attack(combatant) {
-    console.log("player",combatant);
-    console.log("player health",combatant.health);
-    combatant.health -= 10;
-    console.log("player health after",combatant.health);
+  function attack() {
+    console.log("player health",battleGround.player.health);
+    battleGround.player.health -= battleGround.enemy.weapon.damage;
+    console.log("player health after",battleGround.player.health);
+    if(battleGround.player.health < 1){
+      alert("Enemy Wins");
+      return;
+    }
+    console.log("enemy health",battleGround.enemy.health);
+    battleGround.enemy.health -= battleGround.player.weapon.damage;
+    console.log("enemy health after",battleGround.enemy.health);
+    if(battleGround.enemy.health < 1){
+      alert("Player Wins");
+      return;
+    }
   }
-
-  attack(battleGround.player);
 
   console.log(battleGround);
 
@@ -90,6 +98,11 @@ $(document).ready(function() {
     var previousCard = $(this).attr("previous");
     $(".card").hide();
     $("." + previousCard).show();
+  });
+
+  $(".attack__link").click(function(e) {
+    console.log("attack clicked");
+    attack();
   });
 
 });
