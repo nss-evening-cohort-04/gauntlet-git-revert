@@ -2,9 +2,9 @@
 
 var Gauntlet = (function (weaponChoice){
 
-  weaponChoice.weaponRack = {};
+  weaponChoice.WeaponRack = {};
 
-  weaponChoice.weaponRack.Weapon = function() {
+  weaponChoice.WeaponRack.Weapon = function() {
   this.name = "bare hands";
   this.damage = 1;
   this.hands = 2;
@@ -14,29 +14,27 @@ var Gauntlet = (function (weaponChoice){
   };
   };
 
-  weaponChoice.weaponRack.Dagger = function() {
+  weaponChoice.WeaponRack.Dagger = function() {
     this.name = "dagger";
     this.damage = 4;
     this.hands = 1;
   };
-  weaponChoice.weaponRack.Dagger.prototype = new weaponChoice.weaponRack.Weapon();
+  weaponChoice.WeaponRack.Dagger.prototype = new weaponChoice.WeaponRack.Weapon();
 
-  weaponChoice.weaponRack.BroadSword = function() {
+  weaponChoice.WeaponRack.BroadSword = function() {
     this.name = "broad sword";
     this.damage = 14;
     this.hands = 2;
   };
-  weaponChoice.weaponRack.BroadSword.prototype = new weaponChoice.weaponRack.Weapon();
+  weaponChoice.WeaponRack.BroadSword.prototype = new weaponChoice.WeaponRack.Weapon();
 
-  weaponChoice.weaponRack.WarAxe = function() {
+  weaponChoice.WeaponRack.WarAxe = function() {
     this.name = "war axe";
     this.damage = 18;
     this.hands = 2;
   };
-  weaponChoice.weaponRack.WarAxe.prototype = new weaponChoice.weaponRack.Weapon();
+  weaponChoice.WeaponRack.WarAxe.prototype = new weaponChoice.WeaponRack.Weapon();
 
   return weaponChoice;
 
   })(Gauntlet || {});
-
-

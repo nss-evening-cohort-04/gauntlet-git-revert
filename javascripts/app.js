@@ -1,26 +1,28 @@
 "use strict";
 
-/*
-  Test code to generate a human player and an orc player
- */
-var warrior = new Gauntlet.Combatants.Human();
-warrior.setWeapon(new WarAxe());
-warrior.generateClass();  // This will be used for "Surprise me" option
-console.log(warrior.toString());
 
-var orc = new Gauntlet.Combatants.Orc();
-orc.generateClass();
-orc.setWeapon(new BroadSword());
-console.log(orc.toString());
-
-/*
-  Test code to generate a spell
- */
-var spell = new Gauntlet.SpellBook.Sphere();
-console.log("spell: ", spell.toString());
 
 
 $(document).ready(function() {
+
+  /*
+    Test code to generate a human player and an orc player
+   */
+  var warrior = new Gauntlet.Combatants.Human();
+  warrior.setWeapon(new Gauntlet.WeaponRack.WarAxe());
+  warrior.generateClass();  // This will be used for "Surprise me" option
+  console.log(warrior.toString());
+
+  var orc = new Gauntlet.Combatants.Orc();
+  orc.generateClass();
+  orc.setWeapon(new Gauntlet.WeaponRack.BroadSword());
+  console.log(orc.toString());
+
+  /*
+    Test code to generate a spell
+   */
+  var spell = new Gauntlet.SpellBook.Sphere();
+  console.log("spell: ", spell.toString());
   /*
     Show the initial view that accepts player name
    */
