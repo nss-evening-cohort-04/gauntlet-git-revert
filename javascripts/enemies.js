@@ -22,4 +22,6 @@ Gauntlet.Combatants.Orc = function() {
 
 Gauntlet.Combatants.Orc.prototype = new Gauntlet.Combatants.Monster();
 
+
 })(Gauntlet || {});
+

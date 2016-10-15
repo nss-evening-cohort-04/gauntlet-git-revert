@@ -125,3 +125,4 @@ Gauntlet.GuildHall.Sorcerer.prototype = new Gauntlet.GuildHall.Mage();
  */
 
 })(Gauntlet || {});
+
