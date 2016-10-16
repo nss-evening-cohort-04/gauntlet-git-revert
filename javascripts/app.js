@@ -1,20 +1,16 @@
 "use strict";
 
-let BattleGround = function () {
-  this.player = null;
-  this.enemy = null;
-}
-
+let selectClass = null;
+let selectWeapon = null;
+let selectSpell = null;
 
 $(document).ready(function() {
 
-  /*
-    Test code to generate a human player and an orc player
-   */
-  var warrior = new Gauntlet.Combatants.Human();
-  warrior.setWeapon(new Gauntlet.WeaponRack.WarAxe());
-  warrior.generateClass();  // This will be used for "Surprise me" option
-  console.log(warrior.toString());
+  const $playerName = $('span#player-name');
+  const $playerClass = $('span#player-class');
+  const $playerHealth = $('#player-health');
+  const $playerMana = $('#player-mana');
+
 
   var orc = new Gauntlet.Combatants.Orc();
   orc.generateClass();
@@ -23,15 +19,14 @@ $(document).ready(function() {
 
   var battleGround = new BattleGround();
 
-  battleGround.player = warrior;
   battleGround.enemy = orc;
-
-  console.log(battleGround);
 
   function attack() {
     console.log("player health",battleGround.player.health);
     battleGround.player.health -= battleGround.enemy.weapon.damage;
     console.log("player health after",battleGround.player.health);
+
+    $('#player-health .health-fill').css('height', battleGround.player.health + "%");
     if(battleGround.player.health < 1){
       alert("Enemy Wins");
       return;
@@ -39,6 +34,7 @@ $(document).ready(function() {
     console.log("enemy health",battleGround.enemy.health);
     battleGround.enemy.health -= battleGround.player.weapon.damage;
     console.log("enemy health after",battleGround.enemy.health);
+    $('#enemy-health .health-fill').css('height', battleGround.enemy.health + "%");
     if(battleGround.enemy.health < 1){
       alert("Player Wins");
       return;
@@ -68,20 +64,20 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
-        BattleGround.player = new Gauntlet.Combatants.Player();
-        BattleGround.player.playerName = $("#player-name").val();
-        console.log("moving along player", BattleGround.player);
+        battleGround.player = new Gauntlet.Combatants.Player();
+        battleGround.player.playerName = $("#player-name").val();
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
-        BattleGround.player.setWeapon(new Gauntlet.WeaponRack.BroadSword());
-        console.log("moving along weapon", BattleGround.player);
+        battleGround.player.setWeapon(new Gauntlet.WeaponRack.BroadSword());
         break;
       case "card--spell":
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
+        console.log('battleGround.player.playerName', battleGround.player.playerName);
+        setupBattleGroundScreen();
         break;
     }
 
@@ -104,5 +100,10 @@ $(document).ready(function() {
     console.log("attack clicked");
     attack();
   });
+
+  function setupBattleGroundScreen() {
+    $playerName.text(battleGround.player.playerName);
+    $playerClass.text(battleGround.player.class);
+  }
 
 });
