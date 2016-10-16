@@ -82,13 +82,13 @@ classesChoice.GuildHall.Mage = function() {
 classesChoice.GuildHall.Mage.prototype = new classesChoice.GuildHall.PlayerClass();
 
 
-// classesChoice.GuildHall.Shaman = function() {
-//   this.name = "Shaman";
-//   this.healthBonus = this.healthBonus + 5;
-//   this.strengthBonus = this.strengthBonus - 10;
-//   this.intelligenceBonus = this.intelligenceBonus + 20;
-// };
-// classesChoice.GuildHall.Shaman.prototype = new classesChoice.GuildHall.Mage();
+classesChoice.GuildHall.Shaman = function() {
+  this.name = "Shaman";
+  this.healthBonus = this.healthBonus + 5;
+  this.strengthBonus = this.strengthBonus - 10;
+  this.intelligenceBonus = this.intelligenceBonus + 20;
+};
+classesChoice.GuildHall.Shaman.prototype = new classesChoice.GuildHall.Mage();
 
 
 classesChoice.GuildHall.Wizard = function() {

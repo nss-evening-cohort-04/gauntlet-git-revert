@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     var orc = new Gauntlet.Combatants.Orc();
     orc.generateClass();
-    orc.setWeapon(new Gauntlet.WeaponRack.BroadSword());
+    orc.setWeapon(new Gauntlet.WeaponRack.Spear());
     console.log(orc.toString());
 
     var battleGround = new BattleGround();
@@ -136,7 +136,7 @@ $(document).ready(function() {
         switch (weapon) {
             case "Axe":
                 console.log("axe selected");
-                selectedWeapon = new Gauntlet.WeaponRack.WarAxe();
+                selectedWeapon = new Gauntlet.WeaponRack.Axe();
                 break;
             case "Dagger":
                 console.log("dagger selected");
@@ -144,7 +144,7 @@ $(document).ready(function() {
                 break;
             case "BroadSword":
                 console.log("BroadSword selected");
-                selectedWeapon = new Gauntlet.WeaponRack.BroadSword();
+                selectedWeapon = new Gauntlet.WeaponRack.Spear();
                 break;
             case "Wand":
                 console.log("BroadSword selected");
