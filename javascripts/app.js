@@ -82,6 +82,61 @@ $(document).ready(function() {
         }
     });
 
+    $(document).on("click", ".class__link", function(e) {
+        let classes = $(this).find(".btn__text").attr("classes");
+        switch (classes) {
+            case "Warrior":
+                console.log("Warrior selected");
+                selectedClass = new Gauntlet.GuildHall.Warrior();
+                break;
+            case "Valkyrie":
+                console.log("Valkyrie selected");
+                selectedClass = new Gauntlet.GuildHall.Valkyrie();
+                break;
+            case "Berserker":
+                console.log("Berserker selected");
+                selectedClass = new Gauntlet.GuildHall.Berserker();
+                break;
+            case "Monk":
+                console.log("Monk selected");
+                selectedClass = new Gauntlet.GuildHall.Monk();
+                break;
+            case "Wizard":
+                console.log("Wizard selected");
+                selectedClass = new Gauntlet.GuildHall.Wizard();
+                break;
+            case "Sorcerer":
+                console.log("Sorcerer selected");
+                selectedClass = new Gauntlet.GuildHall.Sorcerer();
+                break;
+            case "Conjurer":
+                console.log("Conjurer selected");
+                selectedClass = new Gauntlet.GuildHall.Conjurer();
+                break;
+            case "Shaman":
+                console.log("Shaman selected");
+                selectedClass = new Gauntlet.GuildHall.Shaman();
+                break;
+            case "Thief":
+                console.log("Thief selected");
+                selectedClass = new Gauntlet.GuildHall.Thief();
+                break;
+            case "Ninja":
+                console.log("Ninja selected");
+                selectedClass = new Gauntlet.GuildHall.Ninja();
+                break;
+            case "Assassin":
+                console.log("Assassin selected");
+                selectedClass = new Gauntlet.GuildHall.Assassin();
+                break;
+            case "randomClass":
+                console.log("randomClass selected");
+                selectedClass = new Gauntlet.GuildHall.randomClass();
+                break;    
+        }
+    });
+
+
     $(document).on("click", ".spell__link", function(e) {
         let spell = $(this).find(".btn__text").attr("spell");
         switch (spell) {
@@ -129,6 +184,10 @@ $(document).ready(function() {
                 console.log("Moonbeam selected");
                 selectedSpell = new Gauntlet.SpellBook.Moonbeam();
                 break;
+            case "random":
+                console.log("random selected");
+                selectedSpell = new Gauntlet.SpellBook.random();
+                break;    
         }
     });
     $(document).on("click", ".weapon__link", function(e) {
