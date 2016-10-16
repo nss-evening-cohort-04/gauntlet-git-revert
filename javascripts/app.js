@@ -4,7 +4,7 @@ let BattleGround = function () {
   this.player = null;
   this.enemy = null;
 }
-
+let spellSelected = null;
 
 $(document).ready(function() {
 
@@ -76,6 +76,56 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
     }
+
+$(document).on("click", ".spell__link", function(e) {
+     let spell = $(this).find(".btn__text").attr("spell");
+     switch(spell){
+       case "Sphere":
+       console.log("Sphere selected");
+       spellSelected = new Gauntlet.SpellBook.Sphere();
+       break;
+       case "FrostNova":
+       console.log("FrostNova selected");
+       spellSelected = new Gauntlet.SpellBook.FrostNova();
+       break;
+       case "KillingCurse":
+       console.log("KillingCurse selected");
+       spellSelected = new Gauntlet.SpellBook.KillingCurse();
+       break;
+       case "Fireball":
+       console.log("Fireball selected");
+       spellSelected = new Gauntlet.SpellBook.Fireball();
+       break;
+       case "Herpes":
+       console.log("Herpes selected");
+       spellSelected = new Gauntlet.SpellBook.Herpes();
+       break;
+       case "Bubbles":
+       console.log("Bubbles selected");
+       spellSelected = new Gauntlet.SpellBook.Bubbles();
+       break;
+       case "Pyroblast":
+       console.log("Pyroblast selected");
+       spellSelected = new Gauntlet.SpellBook.Pyroblast();
+       break;
+       case "Earthquake":
+       console.log("Earthquake selected");
+       spellSelected = new Gauntlet.SpellBook.Earthquake();
+       break;
+       case "Tremor":
+       console.log("Tremor selected");
+       spellSelected = new Gauntlet.SpellBook.Tremor();
+       break;
+       case "Lightning":
+       console.log("Lightning selected");
+       spellSelected = new Gauntlet.SpellBook.Lightning();
+       break;
+       case "Moodbeam":
+       console.log("Moodbeam selected");
+       spellSelected = new Gauntlet.SpellBook.Moodbeam();
+       break;
+     }
+   });
 
     if (moveAlong) {
       $(".card").hide();
