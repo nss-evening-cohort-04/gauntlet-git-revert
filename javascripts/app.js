@@ -125,9 +125,9 @@ $(document).ready(function() {
                 console.log("Lightning selected");
                 selectedSpell = new Gauntlet.SpellBook.Lightning();
                 break;
-            case "Moodbeam":
-                console.log("Moodbeam selected");
-                selectedSpell = new Gauntlet.SpellBook.Moodbeam();
+            case "Moonbeam":
+                console.log("Moonbeam selected");
+                selectedSpell = new Gauntlet.SpellBook.Moonbeam();
                 break;
         }
     });
