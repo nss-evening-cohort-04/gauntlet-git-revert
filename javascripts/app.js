@@ -135,24 +135,28 @@ $(document).ready(function() {
         let weapon = $(this).find(".btn__text").attr("weapon");
         switch (weapon) {
             case "Axe":
-                console.log("axe selected");
+                console.log("Axe selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Axe();
                 break;
             case "Dagger":
-                console.log("dagger selected");
+                console.log("Dagger selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Dagger();
                 break;
-            case "BroadSword":
-                console.log("BroadSword selected");
+            case "Spear":
+                console.log("Spear selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Spear();
                 break;
+            case "Bow":
+                console.log("Bow selected");
+                selectedWeapon = new Gauntlet.WeaponRack.Bow();
+                break;
             case "Wand":
-                console.log("BroadSword selected");
+                console.log("Wand selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Wand();
                 break;
-            case "SwordandShield":
-                console.log("BroadSword selected");
-                selectedWeapon = new Gauntlet.WeaponRack.SwordandShield();
+            case "SwordAndShield":
+                console.log("SwordAndShield selected");
+                selectedWeapon = new Gauntlet.WeaponRack.SwordAndShield();
                 break;
             case "Staff":
                 console.log("Staff selected");
@@ -163,7 +167,7 @@ $(document).ready(function() {
                 selectedWeapon = new Gauntlet.WeaponRack.Mace();
                 break;
             case "Claymore":
-                console.log("Claymore selected");
+                console.log("Claymore");
                 selectedWeapon = new Gauntlet.WeaponRack.Claymore();
                 break;
             case "Crossbow":
