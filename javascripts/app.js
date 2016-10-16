@@ -167,15 +167,15 @@ $(document).ready(function() {
                 selectedWeapon = new Gauntlet.WeaponRack.Mace();
                 break;
             case "Claymore":
-                console.log("Claymore");
+                console.log("Claymore selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Claymore();
                 break;
             case "Crossbow":
-                console.log("Crossbow");
+                console.log("Crossbow selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Crossbow();
                 break;
             case "Random":
-                console.log("random");
+                console.log("random selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Random();
                 break;
         }
