@@ -78,11 +78,11 @@ spells.SpellBook.Lightning = function() {
 };
 spells.SpellBook.Lightning.prototype = new spells.SpellBook.Spell();
 
-spells.SpellBook.Moodbeam = function() {
-  this.name = "Moodbeam";
+spells.SpellBook.Moonbeam = function() {
+  this.name = "Moonbeam";
   this.damage = 5;
 };
-spells.SpellBook.Moodbeam.prototype = new spells.SpellBook.Spell();
+spells.SpellBook.Moonbeam.prototype = new spells.SpellBook.Spell();
 
 return spells;
 
