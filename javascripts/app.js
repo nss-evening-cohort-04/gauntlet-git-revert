@@ -1,8 +1,8 @@
 "use strict";
 
-let selectClass = null;
-let selectWeapon = null;
-let selectSpell = null;
+let selectedClass = null;
+let selectedWeapon = null;
+let selectedSpell = null;
 
 $(document).ready(function() {
 
@@ -86,47 +86,47 @@ $(document).on("click", ".spell__link", function(e) {
      switch(spell){
        case "Sphere":
        console.log("Sphere selected");
-       spellSelected = new Gauntlet.SpellBook.Sphere();
+       selectedSpell = new Gauntlet.SpellBook.Sphere();
        break;
        case "FrostNova":
        console.log("FrostNova selected");
-       spellSelected = new Gauntlet.SpellBook.FrostNova();
+       selectedSpell = new Gauntlet.SpellBook.FrostNova();
        break;
        case "KillingCurse":
        console.log("KillingCurse selected");
-       spellSelected = new Gauntlet.SpellBook.KillingCurse();
+       selectedSpell = new Gauntlet.SpellBook.KillingCurse();
        break;
        case "Fireball":
        console.log("Fireball selected");
-       spellSelected = new Gauntlet.SpellBook.Fireball();
+       selectedSpell = new Gauntlet.SpellBook.Fireball();
        break;
        case "Herpes":
        console.log("Herpes selected");
-       spellSelected = new Gauntlet.SpellBook.Herpes();
+       selectedSpell = new Gauntlet.SpellBook.Herpes();
        break;
        case "Bubbles":
        console.log("Bubbles selected");
-       spellSelected = new Gauntlet.SpellBook.Bubbles();
+       selectedSpell = new Gauntlet.SpellBook.Bubbles();
        break;
        case "Pyroblast":
        console.log("Pyroblast selected");
-       spellSelected = new Gauntlet.SpellBook.Pyroblast();
+       selectedSpell = new Gauntlet.SpellBook.Pyroblast();
        break;
        case "Earthquake":
        console.log("Earthquake selected");
-       spellSelected = new Gauntlet.SpellBook.Earthquake();
+       selectedSpell = new Gauntlet.SpellBook.Earthquake();
        break;
        case "Tremor":
        console.log("Tremor selected");
-       spellSelected = new Gauntlet.SpellBook.Tremor();
+       selectedSpell = new Gauntlet.SpellBook.Tremor();
        break;
        case "Lightning":
        console.log("Lightning selected");
-       spellSelected = new Gauntlet.SpellBook.Lightning();
+       selectedSpell = new Gauntlet.SpellBook.Lightning();
        break;
        case "Moodbeam":
        console.log("Moodbeam selected");
-       spellSelected = new Gauntlet.SpellBook.Moodbeam();
+       selectedSpell = new Gauntlet.SpellBook.Moodbeam();
        break;
      }
    });
