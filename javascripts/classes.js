@@ -82,13 +82,13 @@ classesChoice.GuildHall.Mage = function() {
 classesChoice.GuildHall.Mage.prototype = new classesChoice.GuildHall.PlayerClass();
 
 
-classesChoice.GuildHall.Shaman = function() {
-  this.name = "Shaman";
-  this.healthBonus = this.healthBonus + 5;
-  this.strengthBonus = this.strengthBonus - 10;
-  this.intelligenceBonus = this.intelligenceBonus + 20;
-};
-classesChoice.GuildHall.Shaman.prototype = new classesChoice.GuildHall.Mage();
+// classesChoice.GuildHall.Shaman = function() {
+//   this.name = "Shaman";
+//   this.healthBonus = this.healthBonus + 5;
+//   this.strengthBonus = this.strengthBonus - 10;
+//   this.intelligenceBonus = this.intelligenceBonus + 20;
+// };
+// classesChoice.GuildHall.Shaman.prototype = new classesChoice.GuildHall.Mage();
 
 
 classesChoice.GuildHall.Wizard = function() {
@@ -123,5 +123,40 @@ classesChoice.GuildHall.Sorcerer.prototype = new classesChoice.GuildHall.Mage();
       - Ninja
       - Assassin
  */
+
+classesChoice.GuildHall.Stealth = function() {
+  this.name = "Stealth";
+  this.magical = false;
+  this.healthBonus = this.healthBonus + 10;
+  this.strengthBonus = this.strengthBonus + 5;
+  this.intelligenceBonus = this.intelligenceBonus + 10;
+};
+classesChoice.GuildHall.Stealth.prototype = new classesChoice.GuildHall.PlayerClass();
+
+classesChoice.GuildHall.Thief = function() {
+  this.name = "Thief";
+  this.healthBonus = this.healthBonus - 5;
+  this.strengthBonus = this.strengthBonus - 20;
+  this.intelligenceBonus = this.intelligenceBonus + 30;
+};
+classesChoice.GuildHall.Thief.prototype = new classesChoice.GuildHall.Stealth();
+
+classesChoice.GuildHall.Ninja = function() {
+  this.name = "Ninja";
+  this.healthBonus = this.healthBonus - 5;
+  this.strengthBonus = this.strengthBonus - 20;
+  this.intelligenceBonus = this.intelligenceBonus + 30;
+};
+classesChoice.GuildHall.Ninja.prototype = new classesChoice.GuildHall.Stealth();
+
+classesChoice.GuildHall.Assassin = function() {
+  this.name = "Assassin";
+  this.healthBonus = this.healthBonus - 5;
+  this.strengthBonus = this.strengthBonus - 20;
+  this.intelligenceBonus = this.intelligenceBonus + 30;
+};
+classesChoice.GuildHall.Assassin.prototype = new classesChoice.GuildHall.Stealth();
+
+
 return classesChoice;
 })(Gauntlet || {});
