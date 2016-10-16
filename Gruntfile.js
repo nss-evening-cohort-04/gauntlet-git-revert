@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     jshint: {
       files: ['javascripts/**/*.js'],
       options: {
-        predef: [ "document", "console", "$", "Gauntlet" ],
+        predef: [ "document", "console", "$", "Gauntlet", 'alert'],
         esnext: true,
         globalstrict: true,
         globals: {},
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     },
     watch: {
       javascripts: {
-        files: ['../javascripts/**/*.js'],
+        files: ['javascripts/**/*.js'],
         tasks: ['jshint']
       }
     }
