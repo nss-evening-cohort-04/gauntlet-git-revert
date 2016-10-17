@@ -7,6 +7,7 @@ let selectedSpell = null;
 let BattleGround = function () {
   this.player = null;
   this.enemy = null;
+  this.battleText = [];
 };
 
 $(document).ready(function() {
@@ -15,6 +16,7 @@ $(document).ready(function() {
     const $playerClass = $('span#player-class');
     const $playerHealth = $('#player-health');
     const $playerMana = $('#player-mana');
+    const $battleText = $('#battle-text');
 
 
     var orc = new Gauntlet.Combatants.Orc();
@@ -26,9 +28,12 @@ $(document).ready(function() {
 
     battleGround.enemy = orc;
 
-    function attack() {
+    function attack(type) {
         console.log("player health", battleGround.player.health);
         battleGround.player.health -= battleGround.enemy.weapon.damage;
+        console.log(`enemy attack with ${battleGround.player.weapon.name} for ${battleGround.player.weapon.damage} damage`);
+        $battleText.append(`<div>-${battleGround.player.weapon.damage}</div>`);
+        battleGround.battleText.push(battleGround.player.weapon.damage);
         console.log("player health after", battleGround.player.health);
 
         $('#player-health .health-fill').css('height', battleGround.player.health + "%");
@@ -37,7 +42,17 @@ $(document).ready(function() {
             return;
         }
         console.log("enemy health", battleGround.enemy.health);
-        battleGround.enemy.health -= battleGround.player.weapon.damage;
+        if(type === "spell"){
+          battleGround.enemy.health -= battleGround.player.spell.damage;
+          console.log(`player attack with ${battleGround.player.spell.name} for ${battleGround.player.spell.damage} damage`);
+          $battleText.append(`<div>-${battleGround.player.spell.damage}</div>`);
+          battleGround.battleText.push(battleGround.player.weapon.damage);
+        }else{
+          battleGround.enemy.health -= battleGround.player.weapon.damage;
+          console.log(`player attack with ${battleGround.player.weapon.name} for ${battleGround.player.weapon.damage} damage`);
+          $battleText.append(`<div>-${battleGround.player.weapon.damage}</div>`);
+          battleGround.battleText.push(battleGround.player.weapon.damage);
+        }
         console.log("enemy health after", battleGround.enemy.health);
         $('#enemy-health .health-fill').css('height', battleGround.enemy.health + "%");
         if (battleGround.enemy.health < 1) {
@@ -46,12 +61,10 @@ $(document).ready(function() {
         }
     }
 
-    $("#player-setup").show();
+    setInterval(()=>{
+      $('#battle-text').children().first().fadeOut(300).remove();
+    },500);
 
-    /*
-      When any button with card__link class is clicked,
-      move on to the next view.
-     */
     $(".card__link").click(function(e) {
         var nextCard = $(this).attr("next");
         var moveAlong = false;
@@ -60,18 +73,24 @@ $(document).ready(function() {
             case "card--class":
                 moveAlong = ($("#player-name").val() !== "");
                 battleGround.player = new Gauntlet.Combatants.Player();
-                battleGround.player.playerName = $("#player-name").val();
                 break;
             case "card--weapon":
-                moveAlong = ($("#player-name").val() !== "");
+                battleGround.player.playerName = $("#player-name").val();
+                battleGround.player.setClass(selectedClass);
+                moveAlong = (battleGround.player.class !== null);
+                console.log('card--weapon battleGround.player',battleGround.player);
                 break;
-            case "card--spell":
-                moveAlong = ($("#player-name").val() !== "");
+            case "card--spell":                
                 console.log('selectedWeapon', selectedWeapon);
                 battleGround.player.setWeapon(selectedWeapon);
+                moveAlong = (battleGround.player.weapon !== null);
+                console.log('card--weapon battleGround.player',battleGround.player);
                 break;
             case "card--battleground":
-                moveAlong = ($("#player-name").val() !== "");
+                battleGround.player.setSpell(selectedSpell);
+                console.log('card--weapon battleGround.player',battleGround.player);
+                console.log("battleGround", battleGround);
+                moveAlong = (battleGround.player.spell !== null);
                 console.log('battleGround.player.playerName', battleGround.player.playerName);
                 setupBattleGroundScreen();
                 break;
@@ -132,7 +151,7 @@ $(document).ready(function() {
             case "randomClass":
                 console.log("randomClass selected");
                 selectedClass = new Gauntlet.GuildHall.randomClass();
-                break;    
+                break;
         }
     });
 
@@ -187,7 +206,7 @@ $(document).ready(function() {
             case "random":
                 console.log("random selected");
                 selectedSpell = new Gauntlet.SpellBook.random();
-                break;    
+                break;
         }
     });
     $(document).on("click", ".weapon__link", function(e) {
@@ -240,6 +259,8 @@ $(document).ready(function() {
         }
     });
 
+    $("#player-setup").show();
+
     /*
       When the back button clicked, move back a view
      */
@@ -249,9 +270,12 @@ $(document).ready(function() {
         $("." + previousCard).show();
     });
 
-    $(".attack__link").click(function(e) {
-        console.log("attack clicked");
-        attack();
+    $(".weapon-btn").click(function(e) {
+        attack("weapon");
+    });
+
+    $(".spell-btn").click(function(e) {
+        attack("spell");
     });
 
     function setupBattleGroundScreen() {
