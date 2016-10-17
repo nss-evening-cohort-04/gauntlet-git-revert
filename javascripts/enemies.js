@@ -53,7 +53,7 @@ enemies.Combatants.Kobold = function() {
 
     // Get the string at the index
     var randomClass = this.allowedClasses[random];
-
+    console.log('random class', randomClass);
     // Composes the corresponding player class into the player object
     this.class = new enemies.GuildHall[randomClass]();
     return this.class;
@@ -123,3 +123,4 @@ enemies.Combatants.Undead.prototype = new enemies.Combatants.Monster();
 return enemies;
 
 })(Gauntlet || {});
+
