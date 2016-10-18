@@ -86,8 +86,39 @@ player.Combatants.Human = function() {
   this.skinColor = this.skinColors[randomSkin];
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
+
 };
 player.Combatants.Human.prototype = new player.Combatants.Player();
+
+player.Combatants.Elf = function() {
+  var randomSkin;
+
+  this.species = "Elf";
+  this.intelligence = this.intelligence + 20;
+
+  this.skinColors.push("brown", "red", "white", "disease");
+  randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
+  this.skinColor = this.skinColors[randomSkin];
+
+  this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
+  
+};
+player.Combatants.Elf.prototype = new player.Combatants.Player();
+
+player.Combatants.Dwarf = function() {
+  var randomSkin;
+
+  this.species = "Dwarf";
+  this.intelligence = this.intelligence + 20;
+
+  this.skinColors.push("brown", "red", "white", "disease");
+  randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
+  this.skinColor = this.skinColors[randomSkin];
+
+  this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
+  
+};
+player.Combatants.Dwarf.prototype = new player.Combatants.Player();
 
 
 /*

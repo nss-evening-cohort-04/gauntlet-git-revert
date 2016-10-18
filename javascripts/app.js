@@ -3,6 +3,7 @@
 let selectedClass = null;
 let selectedWeapon = null;
 let selectedSpell = null;
+let selectedRace = null;
 
 let BattleGround = function () {
   this.player = null;
@@ -22,7 +23,7 @@ $(document).ready(function() {
     var orc = new Gauntlet.Combatants.Orc();
     orc.generateClass();
     orc.setWeapon(new Gauntlet.WeaponRack.Spear());
-    console.log(orc.toString());
+    // console.log(orc.toString());
 
     var battleGround = new BattleGround();
 
@@ -70,21 +71,36 @@ $(document).ready(function() {
         var moveAlong = false;
 
         switch (nextCard) {
-            case "card--class":
+            case "card--playerCreation":
                 moveAlong = ($("#player-name").val() !== "");
-                battleGround.player = new Gauntlet.Combatants.Player();
+                if(selectedRace != null){
+                  console.log("select race", selectedRace);
+                  battleGround.player = selectedRace;
+                  if($("#player-name").val() !== ""){
+                    battleGround.player.playerName = $("#player-name").val();
+                  }
+                }
+                if(selectedClass != null){
+                  battleGround.player.setClass(selectedClass);
+                }
+                if(selectedWeapon != null){
+                  battleGround.player.setWeapon(selectedWeapon);
+                }
+                 if(selectedSpell != null){
+                  battleGround.player.setSpell(selectedSpell);
+                }
+                break;
+            case "card--race":
+                moveAlong = true;
+                break;
+            case "card--class":
+                moveAlong = true;
                 break;
             case "card--weapon":
-                battleGround.player.playerName = $("#player-name").val();
-                battleGround.player.setClass(selectedClass);
-                moveAlong = (battleGround.player.class !== null);
-                console.log('card--weapon battleGround.player',battleGround.player);
+                moveAlong = true;
                 break;
             case "card--spell":                
-                console.log('selectedWeapon', selectedWeapon);
-                battleGround.player.setWeapon(selectedWeapon);
-                moveAlong = (battleGround.player.weapon !== null);
-                console.log('card--weapon battleGround.player',battleGround.player);
+                moveAlong = true;
                 break;
             case "card--battleground":
                 battleGround.player.setSpell(selectedSpell);
@@ -100,6 +116,25 @@ $(document).ready(function() {
             $("." + nextCard).show();
         }
     });
+
+    $(document).on("click", ".class__link", function(e) {
+        let races = $(this).find(".btn__text").attr("races");
+        switch (races) {
+            case "Human":
+                console.log("Human selected");
+                selectedRace = new Gauntlet.Combatants.Human();
+                break;
+            case "Elf":
+                console.log("Elf selected");
+                selectedRace = new Gauntlet.Combatants.Human();
+                break;
+            case "Dwarf":
+                console.log("Dwarf selected");
+                selectedRace = new Gauntlet.Combatants.Human();
+                break;
+        }
+    });
+
 
     $(document).on("click", ".class__link", function(e) {
         let classes = $(this).find(".btn__text").attr("classes");
