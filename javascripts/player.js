@@ -15,11 +15,13 @@ player.Combatants.Player = function(name) {
 
   this.playerName = name || "unknown adventurer";
   this.health = Math.floor(Math.random() * 40 + 50);
+  this.mana = Math.floor(Math.random() * 30 + 60);
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
   this.skinColors = [this.skinColor];
   this.strength = 90;
   this.intelligence = 90;
+  this.mana = 100;
 
   this.toString = function() {
     var output = [this.playerName,
@@ -50,6 +52,7 @@ player.Combatants.Player.prototype.setSpell = function(newSpell) {
 
 player.Combatants.Player.prototype.generateClass = function() {
   // Get a random index from the allowed classes array
+  this.allowedClasses = ["Warrior", "Valkyrie", "Berserker", "Monk", "Wizard", "Sorcerer", "Conjurer", "Shaman", "Thief", "Ninja", "Assassin"];
   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
   // Get the string at the index
@@ -61,6 +64,28 @@ player.Combatants.Player.prototype.generateClass = function() {
   // Add the health bonus
   this.health += this.class.healthBonus;
   return this.class;
+};
+
+player.Combatants.Player.prototype.generateWeapon = function() {
+  // Get a random index from the allowed classes array
+  this.allowedWeapons = ["Axe", "Dagger", "Spear", "Bow", "Wand", "SwordAndShield", "Staff", "Mace", "Claymore", "Crossbow"];
+  var random = Math.round(Math.random() * (this.allowedWeapons.length - 1));
+
+  // Get the string at the index
+  var randomWeapon = this.allowedWeapons[random];
+
+  return randomWeapon;
+};
+
+player.Combatants.Player.prototype.generateSpell = function() {
+  // Get a random index from the allowed classes array
+  this.allowedSpells = ["Sphere", "FrostNova", "KillingCurse", "Fireball", "Herpes", "Bubbles", "Pyroblast", "Moonbeam", "Earthquake", "Tremor", "Lightning"];
+  var random = Math.round(Math.random() * (this.allowedSpells.length - 1));
+
+  // Get the string at the index
+  var randomSpell = this.allowedSpells[random];
+
+  return randomSpell;
 };
 
 player.Combatants.Player.prototype.setClass = function(newClass) {
@@ -84,6 +109,7 @@ player.Combatants.Human = function() {
   this.skinColors.push("brown", "red", "white", "disease");
   randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
   this.skinColor = this.skinColors[randomSkin];
+  this.mana = this.mana + 20;
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
 
@@ -129,6 +155,7 @@ player.Combatants.Monster = function() {
   this.health = this.health - 30;
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
+  this.mana = this.mana + 10;
 };
 
 player.Combatants.Monster.prototype = new player.Combatants.Player();

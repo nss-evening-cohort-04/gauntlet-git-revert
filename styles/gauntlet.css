@@ -139,6 +139,10 @@ body {
 
 }
 
+#reset-battleground-btn{
+  display: none;
+}
+
 #enemy{
   width: 50%;
   float:right;
