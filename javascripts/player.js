@@ -14,7 +14,7 @@ player.Combatants.Player = function(name) {
   this.spell = null;
 
   this.playerName = name || "unknown adventurer";
-  this.health = Math.floor(Math.random() * 40 + 50);
+  this.health = Math.floor(Math.random() * 40 + 150);
   this.mana = Math.floor(Math.random() * 30 + 60);
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
@@ -34,8 +34,10 @@ player.Combatants.Player = function(name) {
       " with ",
       this.health,
       " health. ",
-      (this.class.magical) ? "Able to cast " : " Wielding a ",
+      " Wielding a ",
       this.weapon.toString(),
+      " is able to cast ",
+      this.spell.toString(),
       "!"
     ].join("");
     return output;
@@ -127,7 +129,7 @@ player.Combatants.Elf = function() {
   this.skinColor = this.skinColors[randomSkin];
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
-  
+
 };
 player.Combatants.Elf.prototype = new player.Combatants.Player();
 
@@ -142,7 +144,7 @@ player.Combatants.Dwarf = function() {
   this.skinColor = this.skinColors[randomSkin];
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
-  
+
 };
 player.Combatants.Dwarf.prototype = new player.Combatants.Player();
 

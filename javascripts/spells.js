@@ -12,7 +12,7 @@ spells.SpellBook.Spell = function() {
   this.manaCost = 1;
 
   this.toString = function() {
-    return this.name + " for " + this.damage + " damage!";
+    return this.name;
   };
 };
 
