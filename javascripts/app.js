@@ -150,10 +150,6 @@ $(document).ready(function() {
                 break;
             case "randomClass":
                 console.log("randomClass selected");
-                selectedClass = new Gauntlet.GuildHall.randomClass();
-                break;
-            case "randomClass":
-                console.log("randomClass selected");
                 let Class = battleGround.player.generateClass();
                 console.log('Class',Class); 
                 selectedClass = new Gauntlet.GuildHall[Class]();
