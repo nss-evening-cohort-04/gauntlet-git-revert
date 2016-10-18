@@ -82,9 +82,9 @@ $(document).ready(function() {
     if (battleGround.player.health < 1) {
       $('.weapon-btn').attr("disabled", true);
       $('.spell-btn').attr("disabled", true);
-      $('#reset-battleground-btn').toggle();
-      $('#battle-text').toggle();
-      $('#winning-moment').toggle();
+      $('#reset-battleground-btn').show();
+      $('#battle-text').hide();
+      $('#winning-moment').show();
       $('#winning-moment').html(`${battleGround.enemy.playerName} Wins!`);
       return false;
     }
@@ -122,9 +122,9 @@ $(document).ready(function() {
     if (battleGround.enemy.health < 1) {
       $('.weapon-btn').attr("disabled", true);
       $('.spell-btn').attr("disabled", true);
-      $('#reset-battleground-btn').toggle();
-      $('#battle-text').toggle();
-      $('#winning-moment').toggle();
+      $('#reset-battleground-btn').show();
+      $('#battle-text').hide();
+      $('#winning-moment').show();
       $('#winning-moment').html(`<div>${battleGround.player.playerName} Wins!</div>`)
       return false;
     }
@@ -409,10 +409,10 @@ $(document).ready(function() {
     $('#enemy-health .health-title').html(`${battleGround.enemy.health} / ${battleGround.enemyInitialHealth}`);
     $('.weapon-btn').attr("disabled", false);
     $('.spell-btn').attr("disabled", false);
-    $('#reset-battleground-btn').toggle();
+    $('#reset-battleground-btn').hide();
     $('#battle-text').html("");
-    $('#battle-text').toggle();
-    $('#winning-moment').toggle();
+    $('#battle-text').show();
+    $('#winning-moment').hide();
   }
 
   function setupBattleGroundScreen() {
