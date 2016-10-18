@@ -6,7 +6,7 @@ enemies.Combatants.Orc = function() {
   this.health = this.health + 20;
   this.species = "Orc";
   this.allowedClasses = ["Warrior", "Wizard", "Shaman"];
-
+  
   this.generateClass = function() {
     // Get a random index from the allowed classes array
     var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
@@ -33,7 +33,7 @@ enemies.Combatants.Murloc = function() {
 
     // Get the string at the index
     var randomClass = this.allowedClasses[random];
-
+    
     // Composes the corresponding player class into the player object
     this.class = new enemies.GuildHall[randomClass]();
     return this.class;
@@ -53,7 +53,7 @@ enemies.Combatants.Kobold = function() {
 
     // Get the string at the index
     var randomClass = this.allowedClasses[random];
-    console.log('random class', randomClass);
+    
     // Composes the corresponding player class into the player object
     this.class = new enemies.GuildHall[randomClass]();
     return this.class;
@@ -65,7 +65,7 @@ enemies.Combatants.Kobold.prototype = new enemies.Combatants.Monster();
 enemies.Combatants.Gnoll = function() {
   this.health = this.health + 15;
   this.species = "Gnoll";
-  this.allowedClasses = ["Conujurer", "Monk", "Warrior"];
+  this.allowedClasses = ["Conjurer", "Monk", "Warrior"];
 
   this.generateClass = function() {
     // Get a random index from the allowed classes array
@@ -104,7 +104,7 @@ enemies.Combatants.Wolves.prototype = new enemies.Combatants.Monster();
 enemies.Combatants.Undead = function() {
   this.health = this.health + 35;
   this.species = "Undead";
-  this.allowedClasses = ["Warrior", "Sorcerer", "Conujurer"];
+  this.allowedClasses = ["Warrior", "Sorcerer", "Conjurer"];
 
   this.generateClass = function() {
     // Get a random index from the allowed classes array
