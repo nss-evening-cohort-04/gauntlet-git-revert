@@ -82,9 +82,9 @@ enemies.Combatants.Gnoll = function() {
 enemies.Combatants.Gnoll.prototype = new enemies.Combatants.Monster();
 
 
-enemies.Combatants.Wolves = function() {
+enemies.Combatants.Vampire = function() {
   this.health = this.health + 10;
-  this.species = "Wolves";
+  this.species = "Vampire";
   this.allowedClasses = ["Berserker", "Monk", "Sorcerer"];
 
   this.generateClass = function() {
@@ -99,7 +99,7 @@ enemies.Combatants.Wolves = function() {
     return this.class;
   };
 };
-enemies.Combatants.Wolves.prototype = new enemies.Combatants.Monster();
+enemies.Combatants.Vampire.prototype = new enemies.Combatants.Monster();
 
 enemies.Combatants.Undead = function() {
   this.health = this.health + 35;
