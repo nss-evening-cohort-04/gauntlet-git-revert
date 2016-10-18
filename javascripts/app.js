@@ -165,7 +165,6 @@ $(document).ready(function() {
         moveAlong = true;
         break;
       case "card--class":
-        // moveAlong = (battleGround.player.species !== null);
         moveAlong = true;
         break;
       case "card--weapon":
@@ -431,7 +430,7 @@ $(document).ready(function() {
     random = Math.round(Math.random() * (names.length - 1));
     let randomName = names[random];
 
-    let enemies = ["Murloc", "Kobold", "Gnoll", "Wolves", "Undead"];
+    let enemies = ["Murloc", "Kobold", "Gnoll", "Orc", "Undead"];
     random = Math.round(Math.random() * (enemies.length - 1));
     let randomClass = enemies[random];
 
