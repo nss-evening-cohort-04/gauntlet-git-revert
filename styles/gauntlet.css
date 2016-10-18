@@ -223,3 +223,19 @@ body {
   z-index: -1;
   height:100%;
 }
+
+/*#player-setup{
+  background-image: url("http://media.blizzard.com/wow/media/wallpapers/other/dark-portal/dark-portal-1600x1200.jpg");
+}*/
+
+#class-select{
+  /*background-image: url("http://vignette2.wikia.nocookie.net/wowwiki/images/4/4b/The_Trade_District.jpg/revision/latest?cb=20060501090442");*/
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body{
+    background-image: url("http://media.blizzard.com/wow/media/wallpapers/other/dark-portal/dark-portal-1600x1200.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
