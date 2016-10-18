@@ -74,6 +74,17 @@ player.Combatants.Player.prototype.generateWeapon = function() {
   return randomWeapon;
 };
 
+player.Combatants.Player.prototype.generateSpell = function() {
+  // Get a random index from the allowed classes array
+  this.allowedSpells = ["Sphere", "FrostNova", "KillingCurse", "Fireball", "Herpes", "Bubbles", "Pyroblast", "Moonbeam", "Earthquake", "Tremor", "Lightning"];
+  var random = Math.round(Math.random() * (this.allowedSpells.length - 1));
+
+  // Get the string at the index
+  var randomSpell = this.allowedSpells[random];
+
+  return randomSpell;
+};
+
 player.Combatants.Player.prototype.setClass = function(newClass) {
   this.class = new Gauntlet.GuildHall[newClass]();
 
