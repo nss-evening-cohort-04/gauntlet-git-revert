@@ -27,7 +27,7 @@ classesChoice.GuildHall.PlayerClass = function() {
       - Monk
  */
 classesChoice.GuildHall.Fighter = function() {
-  this.healthBonus = 20;
+  this.healthBonus = 50;
   this.strengthBonus = 10;
 };
 classesChoice.GuildHall.Fighter.prototype = new classesChoice.GuildHall.PlayerClass();
