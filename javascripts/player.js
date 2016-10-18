@@ -15,11 +15,13 @@ player.Combatants.Player = function(name) {
 
   this.playerName = name || "unknown adventurer";
   this.health = Math.floor(Math.random() * 40 + 50);
+  this.mana = Math.floor(Math.random() * 30 + 60);
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
   this.skinColors = [this.skinColor];
   this.strength = 90;
   this.intelligence = 90;
+  this.mana = 100;
 
   this.toString = function() {
     var output = [this.playerName,
@@ -84,6 +86,7 @@ player.Combatants.Human = function() {
   this.skinColors.push("brown", "red", "white", "disease");
   randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
   this.skinColor = this.skinColors[randomSkin];
+  this.mana = this.mana + 20;
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
 };
@@ -98,6 +101,7 @@ player.Combatants.Monster = function() {
   this.health = this.health - 30;
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
+  this.mana = this.mana + 10;
 };
 
 player.Combatants.Monster.prototype = new player.Combatants.Player();

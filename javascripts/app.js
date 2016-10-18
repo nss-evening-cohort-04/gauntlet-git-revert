@@ -8,6 +8,10 @@ let BattleGround = function () {
   this.player = null;
   this.enemy = null;
   this.battleText = [];
+  this.playerInitialHealth = 0;
+  this.enemyInitialHealth = 0;
+  this.playerInitialMana = 0;
+  this.enemyInitialMana = 0;
 };
 
 $(document).ready(function() {
@@ -18,52 +22,90 @@ $(document).ready(function() {
     const $playerMana = $('#player-mana');
     const $battleText = $('#battle-text');
 
-
     var orc = new Gauntlet.Combatants.Orc();
     orc.generateClass();
     orc.setWeapon(new Gauntlet.WeaponRack.Spear());
     console.log(orc.toString());
 
     var battleGround = new BattleGround();
-
     battleGround.enemy = orc;
+    battleGround.enemyInitialHealth = battleGround.enemy.health;
+    battleGround.enemyInitialMana = battleGround.enemy.mana;
 
     function attack(type) {
-        console.log("player health", battleGround.player.health);
-        battleGround.player.health -= battleGround.enemy.weapon.damage;
-        console.log(`enemy attack with ${battleGround.player.weapon.name} for ${battleGround.player.weapon.damage} damage`);
-        $battleText.append(`<div>-${battleGround.player.weapon.damage}</div>`);
-        battleGround.battleText.push(battleGround.player.weapon.damage);
-        console.log("player health after", battleGround.player.health);
+      let attackFirst = Math.floor(Math.random() * 2) + 1
+      let continueFighting = true;
 
-        $('#player-health .health-fill').css('height', battleGround.player.health + "%");
-        if (battleGround.player.health < 1) {
-            alert("Enemy Wins");
-            return;
+      console.log("attackFirst", attackFirst);
+      setTimeout(function functionName() {
+        continueFighting = (attackFirst === 1) ? attackPlayer() : attackEnemy(type);
+        if (continueFighting) {
+          setTimeout(function functionName() {
+            continueFighting = (attackFirst === 1) ? attackEnemy(type) : attackPlayer();
+          }, 1000);
         }
-        console.log("enemy health", battleGround.enemy.health);
-        if(type === "spell"){
+      }, 500);
+    }
+
+    function attackPlayer() {
+      console.log("player health", battleGround.player.health);
+      battleGround.player.health -= battleGround.enemy.weapon.damage;
+      console.log(`enemy attack with ${battleGround.enemy.weapon.name} for ${battleGround.enemy.weapon.damage} damage`);
+      $battleText.append(`<div>-${battleGround.enemy.weapon.damage}</div>`);
+      battleGround.battleText.push(battleGround.enemy.weapon.damage);
+      console.log("player health after", battleGround.player.health);
+
+      $('#player-health .health-fill').css('height', (battleGround.player.health / battleGround.playerInitialHealth) * 100 + "%");
+      if (battleGround.player.health < 1) {
+        $('.weapon-btn').attr("disabled", true);
+        $('.spell-btn').attr("disabled", true);
+          alert("Enemy Wins");
+          $('#reset-battleground-btn').toggle();
+          return false;
+      }
+      return true;
+    }
+
+    function attackEnemy(type) {
+      console.log("enemy health", battleGround.enemy.health);
+      let manaRegen = 10;
+      if(type === "spell" && battleGround.player.mana >= battleGround.player.spell.manaCost){
           battleGround.enemy.health -= battleGround.player.spell.damage;
           console.log(`player attack with ${battleGround.player.spell.name} for ${battleGround.player.spell.damage} damage`);
           $battleText.append(`<div>-${battleGround.player.spell.damage}</div>`);
           battleGround.battleText.push(battleGround.player.weapon.damage);
+          console.log('player mana before', battleGround.player.mana);
+          battleGround.player.mana -= battleGround.player.spell.manaCost;
+          console.log(`player attack with ${battleGround.player.spell.name} for ${battleGround.player.spell.manaCost} mana cost`);
+      }else{
+        battleGround.enemy.health -= battleGround.player.weapon.damage;
+        console.log(`player attack with ${battleGround.player.weapon.name} for ${battleGround.player.weapon.damage} damage`);
+        $battleText.append(`<div>-${battleGround.player.weapon.damage}</div>`);
+        battleGround.battleText.push(battleGround.player.weapon.damage);
+      }
+      if(battleGround.playerInitialMana !== battleGround.player.mana){
+        if(battleGround.player.mana + manaRegen <= battleGround.playerInitialMana){
+          battleGround.player.mana += manaRegen;
         }else{
-          battleGround.enemy.health -= battleGround.player.weapon.damage;
-          console.log(`player attack with ${battleGround.player.weapon.name} for ${battleGround.player.weapon.damage} damage`);
-          $battleText.append(`<div>-${battleGround.player.weapon.damage}</div>`);
-          battleGround.battleText.push(battleGround.player.weapon.damage);
+          battleGround.player.mana = battleGround.playerInitialMana;
         }
-        console.log("enemy health after", battleGround.enemy.health);
-        $('#enemy-health .health-fill').css('height', battleGround.enemy.health + "%");
-        if (battleGround.enemy.health < 1) {
-            alert("Player Wins");
-            return;
-        }
+      }
+      $('#player-mana .mana-fill').css('height', (battleGround.player.mana / battleGround.playerInitialMana) * 100 + "%");
+      console.log("enemy health after", battleGround.enemy.health);
+      $('#enemy-health .health-fill').css('height', (battleGround.enemy.health / battleGround.enemyInitialHealth) * 100 + "%");
+      if (battleGround.enemy.health < 1) {
+          $('.weapon-btn').attr("disabled", true);
+          $('.spell-btn').attr("disabled", true);
+          alert("Player Wins");
+          $('#reset-battleground-btn').toggle();
+          return false;
+      }
+      return true;
     }
 
     setInterval(()=>{
-      $('#battle-text').children().first().fadeOut(300).remove();
-    },500);
+      $('#battle-text').children().first().fadeOut(500).remove();
+    },2000);
 
     $(".card__link").click(function(e) {
         var nextCard = $(this).attr("next");
@@ -77,10 +119,12 @@ $(document).ready(function() {
             case "card--weapon":
                 battleGround.player.playerName = $("#player-name").val();
                 battleGround.player.setClass(selectedClass);
+                battleGround.playerInitialHealth = battleGround.player.health;
+                battleGround.playerInitialMana = battleGround.player.mana;
                 moveAlong = (battleGround.player.class !== null);
                 console.log('card--weapon battleGround.player',battleGround.player);
                 break;
-            case "card--spell":                
+            case "card--spell":
                 console.log('selectedWeapon', selectedWeapon);
                 battleGround.player.setWeapon(selectedWeapon);
                 moveAlong = (battleGround.player.weapon !== null);
@@ -277,6 +321,24 @@ $(document).ready(function() {
     $(".spell-btn").click(function(e) {
         attack("spell");
     });
+
+    $(".reset-btn").click(function(e) {
+        resetBG();
+    });
+
+    function resetBG() {
+      battleGround.player.health = battleGround.playerInitialHealth;
+      battleGround.player.mana = battleGround.playerInitialMana;
+      battleGround.enemy.health = battleGround.enemyInitialHealth;
+      battleGround.enemy.mana = battleGround.enemyInitialMana;
+      $('#player-mana .mana-fill').css('height', (battleGround.player.mana / battleGround.playerInitialMana) * 100 + "%");
+      $('#player-health .health-fill').css('height', (battleGround.player.health / battleGround.playerInitialHealth) * 100 + "%");
+      $('#enemy-mana .mana-fill').css('height', (battleGround.enemy.mana / battleGround.enemyInitialMana) * 100 + "%");
+      $('#enemy-health .health-fill').css('height', (battleGround.enemy.health / battleGround.enemyInitialHealth) * 100 + "%");
+      $('.weapon-btn').attr("disabled", false);
+      $('.spell-btn').attr("disabled", false);
+      $('#reset-battleground-btn').toggle();
+    }
 
     function setupBattleGroundScreen() {
         $playerName.text(battleGround.player.playerName);
