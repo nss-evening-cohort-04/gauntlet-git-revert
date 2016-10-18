@@ -29,7 +29,7 @@ $(document).ready(function() {
     battleGround.enemyInitialMana = battleGround.enemy.mana;
 
     function attack(type) {
-      let attackFirst = Math.floor(Math.random() * 2) + 1
+      let attackFirst = Math.floor(Math.random() * 2) + 1;
       let continueFighting = true;
 
       console.log("attackFirst", attackFirst);
@@ -247,7 +247,7 @@ $(document).ready(function() {
                 break;
             case "randomSpell":
                 console.log("randomSpell selected");
-                let spell = battleGround.player.generateSpell();
+                spell = battleGround.player.generateSpell();
                 console.log('spell',spell); 
                 selectedSpell = new Gauntlet.SpellBook[spell]();
                 break;    
@@ -298,7 +298,7 @@ $(document).ready(function() {
                 break;
             case "randomWeapon":
                 console.log("randomWeapon selected");
-                let weapon = battleGround.player.generateWeapon();
+                weapon = battleGround.player.generateWeapon();
                 console.log('weapon',weapon); 
                 selectedWeapon = new Gauntlet.WeaponRack[weapon]();
                 break;
