@@ -59,19 +59,19 @@ h1 {
 
 .btn--orange {
   color            : white;
-  border-color     : #FF4136;
-  background-color : #FF4136;
+  border-color     : #c8770b;
+  background-color : #d93400;
 }
 
 .btn--blue {
   color            : white;
-  border-color     : #0074D9;
-  background-color : #0074D9;
+  border-color     : #c8770b;
+  background-color : #717120;
 }
 
 .btn--yellow {
-  color            : white;
-  border-color     : #E4BD00;
+  color            : black;
+  border-color     : #c8770b;
   background-color : #F3C500;
 }
 
@@ -237,6 +237,7 @@ h1 {
 #battle-text {
   color      : yellow;
   text-align : center;
+  text-shadow: 0 0 3px #d68d8d, 0 0 5px #adadff;
 }
 
 #winning-moment {
@@ -244,6 +245,7 @@ h1 {
   color      : yellow;
   text-align : center;
   font-size  : 3em;
+  text-shadow: 0 0 3px #d68d8d, 0 0 5px #adadff;
 }
 
 /**
