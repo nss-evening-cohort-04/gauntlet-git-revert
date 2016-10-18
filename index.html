@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="styles/gauntlet.css">
   </head>
 
-  <body>
+  <body id="body" class="login">
 
     <article id="game-container">
 
@@ -18,16 +18,16 @@
 
       <section id="player-setup" class="card card--name">
         <div class="card__prompt">
-          <h1>RECORD YOUR NAME, ADVENTURER</h1>
+          <h1 id="gametitle">Goldshire Defender!</h1>
           <div class="field">
-            <input type="text" autofocus="true" id="player-name" class="field__textinput">
+            <input type="text" autofocus="true" id="player-name" class="field__textinput" placeholder="Enter thy name">
           </div>
         </div>
 
         <div class="card__button">
           <a class="card__link btn btn--big btn--orange" href="#" next="card--playerCreation">
             <span class="btn__prompt">></span>
-            <span class="btn__text">Select class</span>
+            <span class="btn__text">Login</span>
           </a>
         </div>
       </section>

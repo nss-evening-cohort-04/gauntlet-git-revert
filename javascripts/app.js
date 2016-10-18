@@ -165,6 +165,7 @@ $(document).ready(function() {
         moveAlong = true;
         break;
       case "card--class":
+        // moveAlong = (battleGround.player.species !== null);
         moveAlong = true;
         break;
       case "card--weapon":
@@ -174,6 +175,8 @@ $(document).ready(function() {
         moveAlong = true;
         break;
       case "card--battleground":
+        $("body").removeClass("login");
+        $("body").addClass("goldshire");
         battleGround.player.setSpell(selectedSpell);
         console.log('card--weapon battleGround.player', battleGround.player);
         console.log("battleGround", battleGround);
@@ -442,5 +445,6 @@ $(document).ready(function() {
     console.log("random Enemey", randomEnemy);
     return randomEnemy;
   }
+
 
 });

@@ -9,6 +9,12 @@ body {
 
 h1 {
   color : white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: fantasy;
+}
+
+#gametitle{
+  margin : 300px 0 0 0;
 }
 
 .field {
@@ -20,6 +26,8 @@ h1 {
   padding    : 15px 0;
   text-align : center;
   font-size  : 1em;
+  font-family: fantasy;
+  border-radius: 22px;
 }
 
 /* Section styles */
@@ -55,6 +63,7 @@ h1 {
   text-transform   : uppercase;
   font-size        : 18px;
   font-weight      : 600;
+  font-family: fantasy;
 }
 
 .btn--orange {
@@ -254,17 +263,22 @@ h1 {
  * }
  */
 
-#class-select {
-  /**
-   * background-image:
-   * url("http://vignette2.wikia.nocookie.net/wowwiki/images/4/4b/The_Trade_District.jpg/revision/latest?cb=20060501090442");
-   */
+/*.weapon-select {
+  background-image : url("https://blessingoffish.files.wordpress.com/2010/04/screenshot_040210_190213.jpeg");
+  background-repeat : no-repeat;
+  background-size   : cover;
+}*/
+
+.goldshire{
+  background-image : url("https://thetravelingrogue.files.wordpress.com/2015/05/wowscrnshot_052015_093706.jpg");
   background-repeat : no-repeat;
   background-size   : cover;
 }
 
-body {
+.login {
   background-image  : url("http://media.blizzard.com/wow/media/wallpapers/other/dark-portal/dark-portal-1600x1200.jpg");
   background-repeat : no-repeat;
   background-size   : cover;
 }
+
+
