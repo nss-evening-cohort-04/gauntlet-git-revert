@@ -194,8 +194,10 @@ $(document).ready(function() {
                 break;
             case "randomClass":
                 console.log("randomClass selected");
-                selectedClass = new Gauntlet.GuildHall.randomClass();
-                break;
+                let Class = battleGround.player.generateClass();
+                console.log('Class',Class); 
+                selectedClass = new Gauntlet.GuildHall[Class]();
+                break;    
         }
     });
 
@@ -247,10 +249,12 @@ $(document).ready(function() {
                 console.log("Moonbeam selected");
                 selectedSpell = new Gauntlet.SpellBook.Moonbeam();
                 break;
-            case "random":
-                console.log("random selected");
-                selectedSpell = new Gauntlet.SpellBook.random();
-                break;
+            case "randomSpell":
+                console.log("randomSpell selected");
+                let spell = battleGround.player.generateSpell();
+                console.log('spell',spell); 
+                selectedSpell = new Gauntlet.SpellBook[spell]();
+                break;    
         }
     });
     $(document).on("click", ".weapon__link", function(e) {
@@ -296,9 +300,11 @@ $(document).ready(function() {
                 console.log("Crossbow selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Crossbow();
                 break;
-            case "Random":
-                console.log("random selected");
-                selectedWeapon = new Gauntlet.WeaponRack.Random();
+            case "randomWeapon":
+                console.log("randomWeapon selected");
+                let weapon = battleGround.player.generateWeapon();
+                console.log('weapon',weapon); 
+                selectedWeapon = new Gauntlet.WeaponRack[weapon]();
                 break;
         }
     });

@@ -52,6 +52,7 @@ player.Combatants.Player.prototype.setSpell = function(newSpell) {
 
 player.Combatants.Player.prototype.generateClass = function() {
   // Get a random index from the allowed classes array
+  this.allowedClasses = ["Warrior", "Valkyrie", "Berserker", "Monk", "Wizard", "Sorcerer", "Conjurer", "Shaman", "Thief", "Ninja", "Assassin"];
   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
   // Get the string at the index
@@ -63,6 +64,28 @@ player.Combatants.Player.prototype.generateClass = function() {
   // Add the health bonus
   this.health += this.class.healthBonus;
   return this.class;
+};
+
+player.Combatants.Player.prototype.generateWeapon = function() {
+  // Get a random index from the allowed classes array
+  this.allowedWeapons = ["Axe", "Dagger", "Spear", "Bow", "Wand", "SwordAndShield", "Staff", "Mace", "Claymore", "Crossbow"];
+  var random = Math.round(Math.random() * (this.allowedWeapons.length - 1));
+
+  // Get the string at the index
+  var randomWeapon = this.allowedWeapons[random];
+
+  return randomWeapon;
+};
+
+player.Combatants.Player.prototype.generateSpell = function() {
+  // Get a random index from the allowed classes array
+  this.allowedSpells = ["Sphere", "FrostNova", "KillingCurse", "Fireball", "Herpes", "Bubbles", "Pyroblast", "Moonbeam", "Earthquake", "Tremor", "Lightning"];
+  var random = Math.round(Math.random() * (this.allowedSpells.length - 1));
+
+  // Get the string at the index
+  var randomSpell = this.allowedSpells[random];
+
+  return randomSpell;
 };
 
 player.Combatants.Player.prototype.setClass = function(newClass) {
