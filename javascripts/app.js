@@ -17,16 +17,27 @@ $(document).ready(function() {
     const $playerHealth = $('#player-health');
     const $playerMana = $('#player-mana');
     const $battleText = $('#battle-text');
-
-
-    var orc = new Gauntlet.Combatants.Orc();
-    orc.generateClass();
-    orc.setWeapon(new Gauntlet.WeaponRack.Spear());
-    console.log(orc.toString());
+    
 
     var battleGround = new BattleGround();
 
-    battleGround.enemy = orc;
+function generateRandomEnemy (){
+    let enemies = ["Murloc", "Kobold", "Gnoll", "Wolves", "Undead"];
+    var random = Math.round(Math.random() * (enemies.length - 1));
+
+    // Get the string at the index
+    var randomClass = enemies[random];
+    console.log('Random Class', randomClass);
+    // Composes the corresponding player class into the player object
+    var randomEnemy = new Gauntlet.Combatants[randomClass]();
+    randomEnemy.generateClass();
+    randomEnemy.setWeapon(new Gauntlet.WeaponRack.Spear());
+    console.log(randomEnemy.toString());
+    return randomEnemy;
+}
+
+
+    battleGround.enemy = generateRandomEnemy();
 
     function attack(type) {
         console.log("player health", battleGround.player.health);
