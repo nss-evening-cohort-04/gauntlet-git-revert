@@ -69,7 +69,7 @@ classesChoice.GuildHall.Monk.prototype = new classesChoice.GuildHall.Fighter();
     MAGICAL CLASSES
       - Shaman
       - Wizard
-      - Conujurer
+      - Conjurer
       - Sorcerer
  */
 classesChoice.GuildHall.Mage = function() {
