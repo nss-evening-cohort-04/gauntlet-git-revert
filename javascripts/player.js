@@ -63,6 +63,17 @@ player.Combatants.Player.prototype.generateClass = function() {
   return this.class;
 };
 
+player.Combatants.Player.prototype.generateWeapon = function() {
+  // Get a random index from the allowed classes array
+  this.allowedWeapons = ["Axe", "Dagger", "Spear", "Bow", "Wand", "SwordAndShield", "Staff", "Mace", "Claymore", "Crossbow"];
+  var random = Math.round(Math.random() * (this.allowedWeapons.length - 1));
+
+  // Get the string at the index
+  var randomWeapon = this.allowedWeapons[random];
+
+  return randomWeapon;
+};
+
 player.Combatants.Player.prototype.setClass = function(newClass) {
   this.class = new Gauntlet.GuildHall[newClass]();
 

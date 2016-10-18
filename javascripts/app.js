@@ -252,9 +252,11 @@ $(document).ready(function() {
                 console.log("Crossbow selected");
                 selectedWeapon = new Gauntlet.WeaponRack.Crossbow();
                 break;
-            case "Random":
-                console.log("random selected");
-                selectedWeapon = new Gauntlet.WeaponRack.Random();
+            case "randomWeapon":
+                console.log("randomWeapon selected");
+                let weapon = battleGround.player.generateWeapon();
+                console.log('weapon',weapon); 
+                selectedWeapon = new Gauntlet.WeaponRack[weapon]();
                 break;
         }
     });
